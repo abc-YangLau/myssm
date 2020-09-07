@@ -17,7 +17,7 @@
             <h1 style="color:white">用户登录</h1>
             <form name="form1" id="entry_form" method="post" action="">
                 <input type="text" placeholder="用户名" id="entry_name" name="username">
-                <input type="password" placeholder="密码" id="entry_password" name="PASSWORD">
+                <input type="password" placeholder="密码" id="entry_password" name="password">
                 <button style="width:66px;height:40px;" type="button" id="entry_btn" onClick="login()">登录</button>
                 <button style="width:66px;height:40px;" type="button" id="register_btn" onClick="register()">注册</button>
                 <button style="width:66px;height:40px;" type="reset">重置</button>
@@ -64,9 +64,9 @@
             document.form1.username.focus();
             return false;
         }
-        if (form1.PASSWORD.value == "") {
+        if (form1.password.value == "") {
             alert("密码不能为空！");
-            document.form1.PASSWORD.focus();
+            document.form1.password.focus();
             return false;
         }
 

@@ -10,16 +10,29 @@ import java.io.Serializable;
 public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private int id;
 
     private String username;
 
-    private String PASSWORD;
+    private String password;
 
     private String phoneNum;
 
     private String email;
 
+    public Users(String password) {
+        this.password = password;
+    }
+
+    public Users() {}
+
+    public Users(int id, String username, String password, String phoneNum, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.phoneNum = phoneNum;
+        this.email = email;
+    }
     public String getPhoneNum() {
         return phoneNum;
     }
@@ -36,13 +49,13 @@ public class Users implements Serializable {
         this.email = email;
     }
 
-    public Integer getId() {
-
+    public int getId() {
         return id;
-
     }
 
-    public void setId(Integer id) {
+
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -54,12 +67,12 @@ public class Users implements Serializable {
         this.username = username;
     }
 
-    public String getPASSWORD() {
-        return PASSWORD;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPASSWORD(String PASSWORD) {
-        this.PASSWORD = PASSWORD;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -67,7 +80,7 @@ public class Users implements Serializable {
         return "Users{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", PASSWORD='" + PASSWORD + '\'' +
+                ", password='" + password + '\'' +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", email='" + email + '\'' +
                 '}';

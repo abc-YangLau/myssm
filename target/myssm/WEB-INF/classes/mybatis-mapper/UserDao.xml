@@ -6,7 +6,7 @@
 <!--    &lt;!&ndash; 结果集映射 &ndash;&gt;-->
 	<resultMap id="Users"   type="cn.star.domain.Users">
 		<id property="id" column="id" jdbcType="INTEGER"/>
-		<result column="PASSWORD" property="PASSWORD"/>
+		<result column="PASSWORD" property="password"/>
 		<result column="email" property="email"/>
 		<result column="phoneNum" property="phoneNum"/>
 		<result column="username" property="username"/>
@@ -17,11 +17,11 @@
 	</select>
 
 	<insert id="insertUsers" >
-		INSERT INTO USERS (username,PASSWORD,email,phoneNum) VALUES(#{users.username},#{users.PASSWORD},#{users.email},#{users.phoneNum})
+		INSERT INTO users (username,PASSWORD,email,phoneNum) VALUES(#{users.username},#{users.password},#{users.email},#{users.phoneNum})
 	</insert>
 
 	<select id="login" resultMap="Users">
-		select * from users where username=#{users.username} and PASSWORD=#{users.PASSWORD}
+		select * from users where username=#{users.username} and PASSWORD=#{users.password}
 	</select>
 
 	<delete id="deleteUsersById">

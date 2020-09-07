@@ -49,7 +49,7 @@ public class SendEmail {
         //邮件的标题
         message.setSubject("Lau系统验证邮件");
         //邮件的文本内容
-        String info = "恭喜您注册成功，您的用户名：" + user.getUsername() + ",您的密码：" + user.getPASSWORD() +
+        String info = "恭喜您注册成功，您的用户名：" + user.getUsername() + ",您的密码：" + user.getPassword() +
                 "，请妥善保管，如有问题请QQ联系网站客服:1017413037。";
 //                +"http://"+MAC.getLocalIPList().get("Lau")+":8080/myssm_war_exploded/index.jsp";
         message.setContent(info, "text/html;charset=UTF-8");

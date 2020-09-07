@@ -52,8 +52,8 @@ public class UsersController {
     @RequestMapping("/insert")
     public String insert(Users users) throws Exception {
         System.out.println("注册");
-        if (users.getUsername() == null || users.getUsername().equals("") || users.getPASSWORD() == null
-                || users.getPASSWORD().contentEquals("")) {
+        if (users.getUsername() == null || users.getUsername().equals("") || users.getPassword() == null
+                || users.getPassword().contentEquals("")) {
             return "false";
         }
         // 调用注入的 usersService 调用 insertUsers 方法F

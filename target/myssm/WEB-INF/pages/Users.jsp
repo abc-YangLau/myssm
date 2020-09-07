@@ -29,11 +29,11 @@
                                                                      value="${user.id}"/>${user.id}</td>
                     <td align="center" width="200" height="30"><input type="hidden" name="username"/>${user.username}
                     </td>
-                    <td align="center" width="200" height="30"><input type="hidden" name="PASSWORD"/>${user.PASSWORD}
+                    <td align="center" width="200" height="30"><input type="hidden" name="password"/>${user.password}
                     </td>
-                    <td align="center" width="200" height="30"><input type="hidden" name="PASSWORD"/>${user.phoneNum}
+                    <td align="center" width="200" height="30"><input type="hidden" name="phoneNum"/>${user.phoneNum}
                     </td>
-                    <td align="center" width="200" height="30"><input type="hidden" name="PASSWORD"/>${user.email}</td>
+                    <td align="center" width="200" height="30"><input type="hidden" name="email"/>${user.email}</td>
                 </form>
             </tr>
         </c:forEach>

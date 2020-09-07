@@ -51,9 +51,9 @@ public class mybatistest {
     @Test
     @Transactional
     public void run2() throws Exception {
-        Users users = new Users();
+        Users users = new Users("password");
         users.setUsername("forthstar");
-        users.setPASSWORD("520");
+        users.setPassword("520");
         // 加载配置文件
         InputStream in = Resources.getResourceAsStream("mybatis.xml");
         // 创建SqlSessionFactory对象
