@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--开启注解扫描，这里service和dao是需要扫描的，controller是不需要扫描的-->
+    <!-- 这个扫描的是为了加载Bean到Spring容器中，控制层Controller是与前端页面通过SpringMvc通讯的，所以在此把它排除不扫描 -->
+    <context:component-scan base-package="cn.star">
+        <!--配置要忽略的注解-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--Spring整合MyBatis框架-->
+    <!--配置连接池-->
+    <!-- 这个数据库属性的配置是mybatis框架的东西，可以配置在mybatis的xml中，这里直接给整合到Spring框架里了 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql:///myssm"/>
+        <property name="user" value="root"/>
+        <property name="password" value="111"/>
+    </bean>
+
+    <!--配置SqlSessionFactory工厂-->
+    <!-- 创建SqlSessionFactory，同时指定数据源 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+<!--        <property name="configLocation" value="classpath:mybatis.xml"/>-->
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:mybatis-mapper/*.xml"/>
+    </bean>
+
+    <!--配置UsersDao接口所在包-->
+    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.star.dao"/>
+    </bean>
+
+    <!-- 配置SqlSessionTemplate -->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <!-- 通过构造函数注入 -->
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+</beans>

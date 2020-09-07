@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.star.dao.UsersDao">
+<!--    &lt;!&ndash; 结果集映射 &ndash;&gt;-->
+	<resultMap id="Users"   type="cn.star.domain.Users">
+		<id property="id" column="id" jdbcType="INTEGER"/>
+		<result column="PASSWORD" property="PASSWORD"/>
+		<result column="email" property="email"/>
+		<result column="phoneNum" property="phoneNum"/>
+		<result column="username" property="username"/>
+	</resultMap>
+
+    <select id="findUsers" resultMap="Users">
+		select * from users
+	</select>
+
+	<insert id="insertUsers" >
+		INSERT INTO USERS (username,PASSWORD,email,phoneNum) VALUES(#{users.username},#{users.PASSWORD},#{users.email},#{users.phoneNum})
+	</insert>
+
+	<select id="login" resultMap="Users">
+		select * from users where username=#{users.username} and PASSWORD=#{users.PASSWORD}
+	</select>
+
+	<delete id="deleteUsersById">
+		delete from users where id=#{users.id}
+	</delete>
+</mapper>
