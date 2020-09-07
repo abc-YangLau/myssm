@@ -5,26 +5,30 @@
 <mapper namespace="cn.star.dao.UsersDao">
 <!--    &lt;!&ndash; 结果集映射 &ndash;&gt;-->
 	<resultMap id="Users"   type="cn.star.domain.Users">
-		<id property="id" column="id" jdbcType="INTEGER"/>
+		<id  column="ID_NUM" property="id" jdbcType="INTEGER"/>
 		<result column="PASSWORD" property="password"/>
-		<result column="email" property="email"/>
-		<result column="phoneNum" property="phoneNum"/>
-		<result column="username" property="username"/>
+		<result column="EMAIL" property="email"/>
+		<result column="PHONENUM" property="phoneNum"/>
+		<result column="USER_NAME" property="username"/>
 	</resultMap>
 
+	<!-- 查询所有用户信息-->
     <select id="findUsers" resultMap="Users">
-		select * from users
+		select ID_NUM,USER_NAME,PASSWORD,EMAIL,PHONENUM from users
 	</select>
 
+	<!--注册新用户-->
 	<insert id="insertUsers" >
-		INSERT INTO users (username,PASSWORD,email,phoneNum) VALUES(#{users.username},#{users.password},#{users.email},#{users.phoneNum})
+		INSERT INTO users (USER_NAME,PASSWORD,EMAIL,PHONENUM) VALUES(#{users.username},#{users.password},#{users.email},#{users.phoneNum})
 	</insert>
 
+	<!--登录信息查询-->
 	<select id="login" resultMap="Users">
-		select * from users where username=#{users.username} and PASSWORD=#{users.password}
+		select * from users where USER_NAME=#{users.username} and PASSWORD=#{users.password}
 	</select>
 
+	<!--删除用户信息-->
 	<delete id="deleteUsersById">
-		delete from users where id=#{users.id}
+		delete from users where ID_NUM=#{users.id}
 	</delete>
 </mapper>
